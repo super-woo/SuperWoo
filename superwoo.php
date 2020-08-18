@@ -2,9 +2,9 @@
 /*
 Plugin Name: SuperWoo
 Plugin URI: https://superwoo.net/
-Description: WooCommerce Missing Addons
+Description: WooCommerce Missing Addons for your site
 Version: 1.0.0
-Author: WpAdroit
+Author: Super Woo
 Author URI: https://superwoo.net/
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -13,7 +13,7 @@ Domain Path: /languages
 */
 
 /**
- * Copyright (c) 2020 WpAdroit (email: contact@superwoo.net). All rights reserved.
+ * Copyright (c) 2020 SuperWoo (email: contact@superwoo.net). All rights reserved.
  *
  * Released under the GPL license
  * http://www.opensource.org/licenses/gpl-license.php
