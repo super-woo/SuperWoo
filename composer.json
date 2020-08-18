@@ -1,0 +1,22 @@
+{
+    "name": "wpadroit/superwoo",
+    "description": "WooCommerce Missing Addons",
+    "type": "wordpress-plugin",
+    "license": "GPLv2",
+    "authors": [
+        {
+            "name": "WpAdroit",
+            "email": "contact@superwoo.net"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "WpAdroit\\SuperWoo\\": "includes/"
+        },
+        "files": [
+            "includes/functions.php"
+        ]
+    }
+}
