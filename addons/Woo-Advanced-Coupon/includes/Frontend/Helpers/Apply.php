@@ -1,6 +1,6 @@
 <?php
 
-namespace WpAdroit\Wac_Coupon\Frontend\Helpers;
+namespace superwoo_coupon\superwoo_coupon_Coupon\Frontend\Helpers;
 
 /**
  * Coupon Apply class
@@ -9,71 +9,71 @@ class Apply
 {
     /**
      * Apply Discount
-     * $coupon is wac_coupon
+     * $coupon is superwoo_coupon_coupon
      **/
     public function apply_discount($coupon)
     {
         $cart = WC()->cart;
-        $wac_main = get_post_meta($coupon, "wac_coupon_main", true);
-        if (!$wac_main) {
+        $superwoo_coupon_main = get_post_meta($coupon, "superwoo_coupon_coupon_main", true);
+        if (!$superwoo_coupon_main) {
             return false;
         }
-        $wac_discounts = get_post_meta($coupon, "wac_coupon_discounts", true);
-        $wac_coupon_type = $wac_main["type"];
+        $superwoo_coupon_discounts = get_post_meta($coupon, "superwoo_coupon_coupon_discounts", true);
+        $superwoo_coupon_coupon_type = $superwoo_coupon_main["type"];
         $discount_amount = 0;
-        $discount_label = get_option("wac_first_time_purchase_coupon_label");
-        if ($wac_coupon_type != "product") {
-            if (isset($wac_main["label"]) || !empty($wac_main["label"] || !$wac_main["label"] == '')) {
-                $discount_label = $wac_main["label"];
+        $discount_label = get_option("superwoo_coupon_first_time_purchase_coupon_label");
+        if ($superwoo_coupon_coupon_type != "product") {
+            if (isset($superwoo_coupon_main["label"]) || !empty($superwoo_coupon_main["label"] || !$superwoo_coupon_main["label"] == '')) {
+                $discount_label = $superwoo_coupon_main["label"];
             }
         }
-        if ($wac_coupon_type == "cart") {
-            switch ($wac_discounts["type"]) {
+        if ($superwoo_coupon_coupon_type == "cart") {
+            switch ($superwoo_coupon_discounts["type"]) {
                 case 'percentage':
-                    $discount_total = ($wac_discounts["value"] / 100) * $cart->subtotal;
+                    $discount_total = ($superwoo_coupon_discounts["value"] / 100) * $cart->subtotal;
                     break;
                 case 'fixed':
-                    $discount_total = $wac_discounts["value"];
+                    $discount_total = $superwoo_coupon_discounts["value"];
                     break;
             }
             $discount_amount += $discount_total;
-        } else if ($wac_coupon_type == "product") {
-            $first_coupon          = get_option("wac_first_time_purchase_coupon");
-            $wac_first_coupon_main = false;
+        } else if ($superwoo_coupon_coupon_type == "product") {
+            $first_coupon          = get_option("superwoo_coupon_first_time_purchase_coupon");
+            $superwoo_coupon_first_coupon_main = false;
             if ($first_coupon != 0) {
-                $wac_first_coupon_main = get_post_meta($first_coupon, "wac_coupon_main", true);
-                if ($wac_first_coupon_main) {
-                    if ($wac_first_coupon_main["type"] == "product") {
-                        $wac_first_coupon_main = true;
+                $superwoo_coupon_first_coupon_main = get_post_meta($first_coupon, "superwoo_coupon_coupon_main", true);
+                if ($superwoo_coupon_first_coupon_main) {
+                    if ($superwoo_coupon_first_coupon_main["type"] == "product") {
+                        $superwoo_coupon_first_coupon_main = true;
                     } else {
-                        $wac_first_coupon_main = false;
+                        $superwoo_coupon_first_coupon_main = false;
                     }
                 } else {
-                    update_option("wac_first_time_purchase_coupon", 0);
+                    update_option("superwoo_coupon_first_time_purchase_coupon", 0);
                 }
             }
-            if ($wac_first_coupon_main) {
-                WC()->session->set("wac_product_coupon", [
+            if ($superwoo_coupon_first_coupon_main) {
+                WC()->session->set("superwoo_coupon_product_coupon", [
                     "first_coupon" => "yes"
                 ]);
             } else {
                 $items = [];
                 array_push($items, $coupon);
-                WC()->session->set("wac_product_coupon", [
+                WC()->session->set("superwoo_coupon_product_coupon", [
                     "first_coupon" => "no",
                     "items" => $items
                 ]);
             }
             return false;
-        } else if ($wac_coupon_type == "bulk") {
-            foreach ($wac_discounts as $wac_discount) {
-                if ($wac_discount["min"] <= $cart->subtotal && $wac_discount["max"] >= $cart->subtotal) {
-                    switch ($wac_discount["type"]) {
+        } else if ($superwoo_coupon_coupon_type == "bulk") {
+            foreach ($superwoo_coupon_discounts as $superwoo_coupon_discount) {
+                if ($superwoo_coupon_discount["min"] <= $cart->subtotal && $superwoo_coupon_discount["max"] >= $cart->subtotal) {
+                    switch ($superwoo_coupon_discount["type"]) {
                         case 'percentage':
-                            $discount_total = ($wac_discount["value"] / 100) * $cart->subtotal;
+                            $discount_total = ($superwoo_coupon_discount["value"] / 100) * $cart->subtotal;
                             break;
                         case 'fixed':
-                            $discount_total = $wac_discount["value"];
+                            $discount_total = $superwoo_coupon_discount["value"];
                             break;
                     }
                     $discount_amount += $discount_total;

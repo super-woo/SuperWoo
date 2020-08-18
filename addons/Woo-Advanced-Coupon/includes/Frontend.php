@@ -1,10 +1,10 @@
 <?php
 
-namespace WpAdroit\Wac_Coupon;
+namespace superwoo_coupon\superwoo_coupon_Coupon;
 
-use WpAdroit\Wac_Coupon\Frontend\Wac_auto;
-use WpAdroit\Wac_Coupon\Frontend\Wac_front;
-use WpAdroit\Wac_Coupon\Frontend\Wac_url;
+use superwoo_coupon\superwoo_coupon_Coupon\Frontend\superwoo_coupon_auto;
+use superwoo_coupon\superwoo_coupon_Coupon\Frontend\superwoo_coupon_front;
+use superwoo_coupon\superwoo_coupon_Coupon\Frontend\superwoo_coupon_url;
 
 /**
  * Frontend handler class
@@ -16,8 +16,8 @@ class Frontend
      */
     public function __construct()
     {
-        new Wac_front;
-        new Wac_url;
-        new Wac_auto;
+        new superwoo_coupon_front;
+        new superwoo_coupon_url;
+        new superwoo_coupon_auto;
     }
 }

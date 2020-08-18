@@ -1,35 +1,45 @@
 <template>
   <div>
-    <div v-if="loading" class="spinner is-active wac_spinner"></div>
+    <div v-if="loading" class="spinner is-active superwoo_coupon_spinner"></div>
     <div v-else>
-      <div v-if="$root.wac_form.type != 'product'">
+      <div v-if="$root.superwoo_coupon_form.type != 'product'">
         <input type="hidden" name="rulesLength" :value="conditions.length" />
-        <div class="wac-form">
+        <div class="superwoo_coupon-form">
           <label>
             <strong>Conditions Relationship</strong>
-            <div class="wac-checkbox">
+            <div class="superwoo_coupon-checkbox">
               <label>
-                <input name="wac_rule_relation" type="radio" value="match_all" v-model="relation" /> Match All
+                <input
+                  name="superwoo_coupon_rule_relation"
+                  type="radio"
+                  value="match_all"
+                  v-model="relation"
+                /> Match All
               </label>
               <label>
-                <input name="wac_rule_relation" type="radio" value="match_any" v-model="relation" /> Match Any
+                <input
+                  name="superwoo_coupon_rule_relation"
+                  type="radio"
+                  value="match_any"
+                  v-model="relation"
+                /> Match Any
               </label>
             </div>
           </label>
         </div>
         <div
-          class="wac-flex wac-filter wac-bulk-discount"
+          class="superwoo_coupon-flex superwoo_coupon-filter superwoo_coupon-bulk-discount"
           v-for="(condition, index) in conditions"
           :key="'condition'+index"
         >
-          <div class="wac-bulk-list">
-            <div class="wac-form">
-              <label :for="'wac_rule_type_'+index">
+          <div class="superwoo_coupon-bulk-list">
+            <div class="superwoo_coupon-form">
+              <label :for="'superwoo_coupon_rule_type_'+index">
                 <strong>Condition Type</strong>
               </label>
               <select
-                :id="'wac_rule_type_'+index"
-                :name="'wac_rule_type_'+index"
+                :id="'superwoo_coupon_rule_type_'+index"
+                :name="'superwoo_coupon_rule_type_'+index"
                 v-model="condition.type"
               >
                 <option
@@ -40,14 +50,14 @@
               </select>
             </div>
           </div>
-          <div class="wac-bulk-list">
-            <div class="wac-form">
-              <label :for="'wac_rule_operator_'+index">
+          <div class="superwoo_coupon-bulk-list">
+            <div class="superwoo_coupon-form">
+              <label :for="'superwoo_coupon_rule_operator_'+index">
                 <strong>count should be</strong>
               </label>
               <select
-                :id="'wac_rule_operator_'+index"
-                :name="'wac_rule_operator_'+index"
+                :id="'superwoo_coupon_rule_operator_'+index"
+                :name="'superwoo_coupon_rule_operator_'+index"
                 v-model="condition.operator"
               >
                 <option
@@ -58,29 +68,29 @@
               </select>
             </div>
           </div>
-          <div class="wac-bulk-list">
-            <div class="wac-form">
-              <label :for="'wac_rule_item_'+index">
+          <div class="superwoo_coupon-bulk-list">
+            <div class="superwoo_coupon-form">
+              <label :for="'superwoo_coupon_rule_item_'+index">
                 <strong>item count</strong>
               </label>
               <input
                 type="number"
-                :id="'wac_rule_item_'+index"
-                :name="'wac_rule_item_'+index"
+                :id="'superwoo_coupon_rule_item_'+index"
+                :name="'superwoo_coupon_rule_item_'+index"
                 placeholder="1"
                 min="1"
                 v-model="condition.item_count"
               />
             </div>
           </div>
-          <div class="wac-bulk-list">
-            <div class="wac-form">
-              <label :for="'wac_rule_calculate_'+index">
+          <div class="superwoo_coupon-bulk-list">
+            <div class="superwoo_coupon-form">
+              <label :for="'superwoo_coupon_rule_calculate_'+index">
                 <strong>calculate item count</strong>
               </label>
               <select
-                :id="'wac_rule_calculate_'+index"
-                :name="'wac_rule_calculate_'+index"
+                :id="'superwoo_coupon_rule_calculate_'+index"
+                :name="'superwoo_coupon_rule_calculate_'+index"
                 v-model="condition.calculate"
               >
                 <option
@@ -91,11 +101,11 @@
               </select>
             </div>
           </div>
-          <div class="wac-filter-close">
+          <div class="superwoo_coupon-filter-close">
             <span @click="removeRule(index)" class="dashicons dashicons-no-alt"></span>
           </div>
         </div>
-        <div class="wac_buttons">
+        <div class="superwoo_coupon_buttons">
           <button type="button" @click="AddRules" class="button-primary">Add Condition</button>
         </div>
       </div>
@@ -105,7 +115,7 @@
 
 <script>
 export default {
-  name: "wacrules",
+  name: "superwoo_couponrules",
   data() {
     return {
       loading: true,
@@ -176,12 +186,12 @@ export default {
     getRules() {
       this.loading = false;
       let formData = {
-        action: "wac_get_rules",
-        post_id: wac_post.id,
+        action: "superwoo_coupon_get_rules",
+        post_id: superwoo_coupon_post.id,
       };
       let root = this;
       axios
-        .post(wac_helper_obj.ajax_url, Qs.stringify(formData))
+        .post(superwoo_coupon_helper_obj.ajax_url, Qs.stringify(formData))
         .then((response) => {
           if (response.data != [] && response.data != "") {
             root.relation = response.data.relation;

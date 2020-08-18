@@ -9,13 +9,11 @@
 - add custom discounts [ "Admin" ]
 - add custom rules [ "Admin" ]
 
-
-
 # Admin Hooks
 
 ---
 
-## wac_discount_type
+## superwoo_coupon_discount_type
 
 > Ajax.php:72
 
@@ -23,7 +21,7 @@ These Filters Hooks can be used for filter discount type fields options ;
 
 ---
 
-## wac_filters
+## superwoo_coupon_filters
 
 > Ajax.php:116
 
@@ -31,30 +29,27 @@ These Filters Hooks can be used to add custom filters ;
 
 ---
 
-
-
-
 # Front Hooks
 
 ---
 
-## wac_brefore_wp_loaded
+## superwoo_coupon_brefore_wp_loaded
 
-> Wac_auto.php:31
+> superwoo_coupon_auto.php:31
 
-These Action Hooks will be run before wac_first_order & wac_auto_coupon ;
-
----
-
-## wac_after_wp_loaded
-
-> Wac_auto.php:34
-
-These Action Hooks will be run after wac_first_order & wac_auto_coupon ;
+These Action Hooks will be run before superwoo_coupon_first_order & superwoo_coupon_auto_coupon ;
 
 ---
 
-## wac_validator
+## superwoo_coupon_after_wp_loaded
+
+> superwoo_coupon_auto.php:34
+
+These Action Hooks will be run after superwoo_coupon_first_order & superwoo_coupon_auto_coupon ;
+
+---
+
+## superwoo_coupon_validator
 
 > Validator.php:23
 

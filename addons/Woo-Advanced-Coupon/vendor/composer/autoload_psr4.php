@@ -6,5 +6,5 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'WpAdroit\\Wac_Coupon\\' => array($baseDir . '/includes'),
+    'superwoo_coupon\\superwoo_coupon_Coupon\\' => array($baseDir . '/includes'),
 );

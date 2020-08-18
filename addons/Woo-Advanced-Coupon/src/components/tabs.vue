@@ -1,8 +1,13 @@
 <template>
   <div class="options_group">
     <p class="form-field">
-      <label for="wac_feature">Coupon Feature</label>
-      <select class="select short" name="wac_feature" id="wac_feature" v-model="wac_feature">
+      <label for="superwoo_coupon_feature">Coupon Feature</label>
+      <select
+        class="select short"
+        name="superwoo_coupon_feature"
+        id="superwoo_coupon_feature"
+        v-model="superwoo_coupon_feature"
+      >
         <option value>Select Coupon Feature</option>
         <option
           v-for="(coupon, index) in coupons"
@@ -34,7 +39,7 @@
 export default {
   data() {
     return {
-      wac_feature: "",
+      superwoo_coupon_feature: "",
       overwrite_discount: null,
       coupons: [],
     };
@@ -46,12 +51,12 @@ export default {
   methods: {
     getLists() {
       let formData = {
-        action: "wac_get_woocoupons",
-        post_id: wac_post.id,
+        action: "superwoo_coupon_get_woocoupons",
+        post_id: superwoo_coupon_post.id,
       };
       let root = this;
       axios
-        .post(wac_helper_obj.ajax_url, Qs.stringify(formData))
+        .post(superwoo_coupon_helper_obj.ajax_url, Qs.stringify(formData))
         .then((response) => {
           root.coupons = response.data;
         })
@@ -61,14 +66,14 @@ export default {
     },
     getData() {
       let formData = {
-        action: "wac_get_wac_panel",
-        post_id: wac_post.id,
+        action: "superwoo_coupon_get_superwoo_coupon_panel",
+        post_id: superwoo_coupon_post.id,
       };
       let root = this;
       axios
-        .post(wac_helper_obj.ajax_url, Qs.stringify(formData))
+        .post(superwoo_coupon_helper_obj.ajax_url, Qs.stringify(formData))
         .then((response) => {
-          root.wac_feature = response.data.list_id;
+          root.superwoo_coupon_feature = response.data.list_id;
           root.overwrite_discount = response.data.overwrite_discount;
         })
         .catch((error) => {

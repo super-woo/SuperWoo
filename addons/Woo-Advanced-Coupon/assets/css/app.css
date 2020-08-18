@@ -1,53 +1,53 @@
-.wac-form {
+.superwoo_coupon-form {
   display: inline-grid;
   line-height: 35px;
   width: 100%;
   position: relative;
 }
 
-.wac-form>input,
-.wac-form>select {
+.superwoo_coupon-form>input,
+.superwoo_coupon-form>select {
   width: 100%;
 }
 
-.wac-flex {
+.superwoo_coupon-flex {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
 }
 
-.wac-content-arround {
+.superwoo_coupon-content-arround {
   justify-content: space-around;
 }
 
-.wac-col-2 {
+.superwoo_coupon-col-2 {
   width: 50%;
 }
 
-.wac-col-3 {
+.superwoo_coupon-col-3 {
   width: 33.33%;
 }
 
-.wac-filter {
+.superwoo_coupon-filter {
   margin-bottom: 20px;
 }
 
-.wac-filter-list {
+.superwoo_coupon-filter-list {
   width: 25%;
 }
 
-.wac-bulk-list {
+.superwoo_coupon-bulk-list {
   margin-right: 10px;
   width: 20%;
 }
 
-.wac-filter>div:nth-child(1),
-.wac-filter>div:nth-child(2) {
+.superwoo_coupon-filter>div:nth-child(1),
+.superwoo_coupon-filter>div:nth-child(2) {
   margin-right: 10px;
 }
 
-.wac-filter-close {
+.superwoo_coupon-filter-close {
   background: red;
   color: white;
   border-radius: 50%;
@@ -57,11 +57,11 @@
   margin-left: 10px;
 }
 
-.wac_buttons {
+.superwoo_coupon_buttons {
   margin-left: 6px;
 }
 
-.wac_tags_component {
+.superwoo_coupon_tags_component {
   border: 1px solid #9E9E9E;
   border-radius: 3px;
   padding-left: 5px;
@@ -70,19 +70,19 @@
   position: relative;
 }
 
-.wac_tags {
+.superwoo_coupon_tags {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   margin: 0;
 }
 
-ul.wac_tags>li {
+ul.superwoo_coupon_tags>li {
   margin-right: 5px;
   margin-bottom: -5px;
 }
 
-.wac_tags>li>a {
+.superwoo_coupon_tags>li>a {
   background: #cccccc70;
   border: 1px solid #9E9E9E;
   font-size: 11px;
@@ -94,7 +94,7 @@ ul.wac_tags>li {
   position: relative;
 }
 
-.wac_tags>li>a>i {
+.superwoo_coupon_tags>li>a>i {
   font-size: 11px;
   position: absolute;
   top: 6px;
@@ -118,18 +118,18 @@ ul.hidden-items>li {
   cursor: pointer;
 }
 
-.wac_select_search {
+.superwoo_coupon_select_search {
   padding: 0;
   padding-left: 0 !important;
 }
 
-.wac_select_search>i {
+.superwoo_coupon_select_search>i {
   position: absolute;
   font-size: 13px;
   top: 10px;
 }
 
-.wac_select_search>input {
+.superwoo_coupon_select_search>input {
   width: 100%;
   border: none;
   margin: 0;
@@ -138,32 +138,32 @@ ul.hidden-items>li {
   margin-top: -4px;
 }
 
-.wac_select_search>input:focus {
+.superwoo_coupon_select_search>input:focus {
   outline: none;
   border: none;
   box-shadow: none;
 }
 
-.wac-checkbox {
+.superwoo_coupon-checkbox {
   margin-bottom: 15px;
   margin-top: -7px;
 }
 
-.wac-checkbox>label:nth-child(1) {
+.superwoo_coupon-checkbox>label:nth-child(1) {
   margin-right: 15px;
 }
 
-.wac-show-hide-checkbox {
+.superwoo_coupon-show-hide-checkbox {
   margin-left: 20px;
   margin-top: 20px;
 }
 
-.wac-show-hide-checkbox>.wac-form>label>.wac-checkbox {
+.superwoo_coupon-show-hide-checkbox>.superwoo_coupon-form>label>.superwoo_coupon-checkbox {
   margin-bottom: 0 !important;
   margin-top: -13px !important;
 }
 
-pre.wac_pre_column {
+pre.superwoo_coupon_pre_column {
   background: #e8e4e4;
   width: fit-content;
   padding: 3px 8px;
@@ -171,13 +171,13 @@ pre.wac_pre_column {
 }
 
 @media (max-width : 850px) {
-  .wac-filter {
+  .superwoo_coupon-filter {
     margin-bottom: 50px !important;
   }
 
-  .wac-col-3,
-  .wac-bulk-list,
-  .wac-filter-list {
+  .superwoo_coupon-col-3,
+  .superwoo_coupon-bulk-list,
+  .superwoo_coupon-filter-list {
     width: 100% !important;
   }
 }

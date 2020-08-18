@@ -1,30 +1,30 @@
 <?php
 
-namespace WpAdroit\Wac_Coupon\Frontend;
+namespace superwoo_coupon\superwoo_coupon_Coupon\Frontend;
 
 /**
- * Class Wac_url
+ * Class superwoo_coupon_url
  * control url apply coupon system
  */
-class Wac_url
+class superwoo_coupon_url
 {
     public function __construct()
     {
         // set coupon on session via GET method
-        add_action('init', [$this, "wac_set_coupon_url"]);
+        add_action('init', [$this, "superwoo_coupon_set_coupon_url"]);
         // apply when add to cart
-        add_action("woocommerce_add_to_cart", [$this, "wac_apply_coupon"]);
+        add_action("woocommerce_add_to_cart", [$this, "superwoo_coupon_apply_coupon"]);
         // apply coupon on session via GET method
-        add_action("woocommerce_before_cart", [$this, "wac_apply_coupon_via_url"]);
+        add_action("woocommerce_before_cart", [$this, "superwoo_coupon_apply_coupon_via_url"]);
     }
 
     /**
      * WooCommerce set coupon on session
      *
      **/
-    public function wac_set_coupon_url()
+    public function superwoo_coupon_set_coupon_url()
     {
-        $url = get_option("wac_woo_setting_url");
+        $url = get_option("superwoo_coupon_woo_setting_url");
         if (isset($_GET[$url])) {
             $coupon_code = esc_attr($_GET[$url]);
             WC()->session->set('coupon_code', $coupon_code);
@@ -35,16 +35,16 @@ class Wac_url
      * WooCommerce apply coupon when add-to-cart
      *
      **/
-    public function wac_apply_coupon()
+    public function superwoo_coupon_apply_coupon()
     {
-        $this->wac_apply_coupon_via_url();
+        $this->superwoo_coupon_apply_coupon_via_url();
     }
 
     /**
      * WooCommerce apply coupon from session
      *
      **/
-    public function wac_apply_coupon_via_url()
+    public function superwoo_coupon_apply_coupon_via_url()
     {
         $coupons = WC()->cart->get_applied_coupons();
         $code = WC()->session->get('coupon_code');

@@ -1,19 +1,17 @@
 {
-    "name": "wp-adroit/woo-advance-coupon",
+    "name": "superwoo_coupon/superwoo_coupon-advance-coupon",
     "description": "WooCommerce Missing Coupon Features",
     "type": "wordpress-plugin",
     "license": "GPLv2",
-    "authors": [
-        {
-            "name": "Wp Adroit",
-            "email": "contact@wpadroit.com"
-        }
-    ],
+    "authors": [{
+        "name": "Super Woo",
+        "email": "contact@superwoo.com"
+    }],
     "minimum-stability": "dev",
     "require": {},
     "autoload": {
         "psr-4": {
-            "WpAdroit\\Wac_Coupon\\": "includes/"
+            "superwoo_coupon\\superwoo_coupon_Coupon\\": "includes/"
         },
         "files": [
             "includes/functions.php"

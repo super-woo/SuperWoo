@@ -7,18 +7,18 @@ namespace Composer\Autoload;
 class ComposerStaticInitaf96d97d3289cad25c2c755344486969
 {
     public static $files = array (
-        'dffdf9f9debb59a54ac1d1c76a445e8f' => __DIR__ . '/../..' . '/includes/functions.php',
+        '0b0b96c757bc21b05a4512b1374dfcb8' => __DIR__ . '/../..' . '/includes/functions.php',
     );
 
     public static $prefixLengthsPsr4 = array (
-        'W' => 
+        's' => 
         array (
-            'WpAdroit\\Wac_Coupon\\' => 20,
+            'superwoo_coupon\\superwoo_coupon_Coupon\\' => 39,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'WpAdroit\\Wac_Coupon\\' => 
+        'superwoo_coupon\\superwoo_coupon_Coupon\\' => 
         array (
             0 => __DIR__ . '/../..' . '/includes',
         ),

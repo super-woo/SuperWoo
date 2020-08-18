@@ -1,6 +1,6 @@
 <?php
 
-namespace WpAdroit\Wac_Coupon;
+namespace superwoo_coupon\superwoo_coupon_Coupon;
 
 /**
  * Scripts and Styles Class
@@ -42,7 +42,7 @@ class Assets
         foreach ($scripts as $handle => $script) {
             $deps      = isset($script['deps']) ? $script['deps'] : false;
             $in_footer = isset($script['in_footer']) ? $script['in_footer'] : false;
-            $version   = isset($script['version']) ? $script['version'] : WAC_ASSETS_VERSION;
+            $version   = isset($script['version']) ? $script['version'] : superwoo_coupon_ASSETS_VERSION;
 
             wp_register_script($handle, $script['src'], $deps, $version, $in_footer);
         }
@@ -60,7 +60,7 @@ class Assets
         foreach ($styles as $handle => $style) {
             $deps = isset($style['deps']) ? $style['deps'] : false;
 
-            wp_register_style($handle, $style['src'], $deps, WAC_ASSETS_VERSION);
+            wp_register_style($handle, $style['src'], $deps, superwoo_coupon_ASSETS_VERSION);
         }
     }
 
@@ -71,10 +71,10 @@ class Assets
      */
     public function get_scripts()
     {
-        $plugin_js_assets_path = WAC_ASSETS_ASSETS . '/js/';
+        $plugin_js_assets_path = superwoo_coupon_ASSETS_ASSETS . '/js/';
 
         $scripts = [
-            "wac_app" => [
+            "superwoo_coupon_app" => [
                 "src" => $plugin_js_assets_path . "app.js",
                 "in_footer" => true
             ]
@@ -90,10 +90,10 @@ class Assets
      */
     public function get_styles()
     {
-        $plugin_css_assets_path = WAC_ASSETS_ASSETS . '/css/';
+        $plugin_css_assets_path = superwoo_coupon_ASSETS_ASSETS . '/css/';
 
         $styles = [
-            "wac_app_css" => [
+            "superwoo_coupon_app_css" => [
                 "src" => $plugin_css_assets_path . "app.css"
             ]
         ];

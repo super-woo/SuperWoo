@@ -1,6 +1,6 @@
 <?php
 
-namespace WpAdroit\Wac_Coupon;
+namespace superwoo_coupon\superwoo_coupon_Coupon;
 
 /**
  * Ajax Handler
@@ -10,24 +10,24 @@ class Ajax
 
 	function __construct()
 	{
-		add_action('wp_ajax_wac_product_search', [$this, 'wac_product_search']);
-		add_action('wp_ajax_wac_get_filters', [$this, 'wac_get_filters']);
-		add_action('wp_ajax_wac_save_filters', [$this, 'wac_save_filters']);
-		add_action('wp_ajax_wac_get_main', [$this, 'wac_get_main']);
-		add_action('wp_ajax_wac_get_discounts', [$this, 'wac_get_discounts']);
-		add_action('wp_ajax_wac_get_rules', [$this, 'wac_get_rules']);
-		add_action('wp_ajax_wac_get_woocoupons', [$this, 'wac_get_woocoupons']);
-		add_action('wp_ajax_wac_get_wac_panel', [$this, 'wac_get_wac_panel']);
+		add_action('wp_ajax_superwoo_coupon_product_search', [$this, 'superwoo_coupon_product_search']);
+		add_action('wp_ajax_superwoo_coupon_get_filters', [$this, 'superwoo_coupon_get_filters']);
+		add_action('wp_ajax_superwoo_coupon_save_filters', [$this, 'superwoo_coupon_save_filters']);
+		add_action('wp_ajax_superwoo_coupon_get_main', [$this, 'superwoo_coupon_get_main']);
+		add_action('wp_ajax_superwoo_coupon_get_discounts', [$this, 'superwoo_coupon_get_discounts']);
+		add_action('wp_ajax_superwoo_coupon_get_rules', [$this, 'superwoo_coupon_get_rules']);
+		add_action('wp_ajax_superwoo_coupon_get_woocoupons', [$this, 'superwoo_coupon_get_woocoupons']);
+		add_action('wp_ajax_superwoo_coupon_get_superwoo_coupon_panel', [$this, 'superwoo_coupon_get_superwoo_coupon_panel']);
 	}
 
-	public function wac_get_wac_panel()
+	public function superwoo_coupon_get_superwoo_coupon_panel()
 	{
 		$post_id = $_POST["post_id"];
-		$post_meta = get_post_meta($post_id, "wac_coupon_panel", true);
+		$post_meta = get_post_meta($post_id, "superwoo_coupon_coupon_panel", true);
 		wp_send_json($post_meta);
 	}
 
-	public function wac_get_woocoupons()
+	public function superwoo_coupon_get_woocoupons()
 	{
 		$args = [
 			"post_type" => "woocoupon",
@@ -44,37 +44,37 @@ class Ajax
 		wp_send_json($filter_Posts);
 	}
 
-	public function wac_get_rules()
+	public function superwoo_coupon_get_rules()
 	{
 		$post_id = $_POST["post_id"];
-		$post_meta = get_post_meta($post_id, "wac_coupon_rules", true);
+		$post_meta = get_post_meta($post_id, "superwoo_coupon_coupon_rules", true);
 		wp_send_json($post_meta);
 	}
 
-	public function wac_get_discounts()
+	public function superwoo_coupon_get_discounts()
 	{
 		$post_id = $_POST["post_id"];
-		$post_meta = get_post_meta($post_id, "wac_coupon_discounts", true);
+		$post_meta = get_post_meta($post_id, "superwoo_coupon_coupon_discounts", true);
 		wp_send_json($post_meta);
 	}
 
-	public function wac_get_main()
+	public function superwoo_coupon_get_main()
 	{
 		$post_id = $_POST["post_id"];
-		$post_meta = get_post_meta($post_id, "wac_coupon_main", true);
+		$post_meta = get_post_meta($post_id, "superwoo_coupon_coupon_main", true);
 		$discount_type = [
-			"product" => [ "label" => "Product Adjustment" , "has_label" => false ],
-			"cart" => [ "label" => "Cart Adjustment" , "has_label" => true ],
-			"bulk" => [ "label" => "Bulk Discount" , "has_label" => true ]
+			"product" => ["label" => "Product Adjustment", "has_label" => false],
+			"cart" => ["label" => "Cart Adjustment", "has_label" => true],
+			"bulk" => ["label" => "Bulk Discount", "has_label" => true]
 		];
 		$data = [
 			"post_meta" => $post_meta,
-			"discount_type" => apply_filters( "wac_discount_type", $discount_type )
+			"discount_type" => apply_filters("superwoo_coupon_discount_type", $discount_type)
 		];
 		wp_send_json($data);
 	}
 
-	public function wac_product_search()
+	public function superwoo_coupon_product_search()
 	{
 		$args = [
 			"post_type" => "product",
@@ -101,37 +101,38 @@ class Ajax
 		wp_send_json($filter_Posts);
 	}
 
-	public function wac_get_filters()
+	public function superwoo_coupon_get_filters()
 	{
 		$post_id = $_POST["post_id"];
-		$post_meta = get_post_meta($post_id, "wac_filters", true);
+		$post_meta = get_post_meta($post_id, "superwoo_coupon_filters", true);
 		$filters_data = [
-			[ "label" => "All Products", "value" => "all_products", "has_item" => false, "items" => null ],
-			[ "label" => "Products", "value" => "products", "has_item" => true, 
-				"items" => [ "action" => "wac_product_search", "label" => "Select Products" ] 
+			["label" => "All Products", "value" => "all_products", "has_item" => false, "items" => null],
+			[
+				"label" => "Products", "value" => "products", "has_item" => true,
+				"items" => ["action" => "superwoo_coupon_product_search", "label" => "Select Products"]
 			]
 		];
 		$send_data = [
 			"post_meta" => $post_meta,
-			"filters_data" => apply_filters( "wac_filters", $filters_data )
+			"filters_data" => apply_filters("superwoo_coupon_filters", $filters_data)
 		];
 		wp_send_json($send_data);
 	}
 
-	public function wac_save_filters()
+	public function superwoo_coupon_save_filters()
 	{
-		if (!wp_verify_nonce($_POST["wac_nonce"], "wac_with_ajax")) {
-			wp_die(__('Sorry !! You cannot permit to access.', 'superwoo'));
+		if (!wp_verify_nonce($_POST["superwoo_coupon_nonce"], "superwoo_coupon_with_ajax")) {
+			wp_die(__('Sorry !! You cannot permit to access.', 'superwoo_coupon'));
 		}
 		$post_id = $_POST["post_id"];
-		$wacfilters = [];
-		foreach ($_POST["wacfilters"] as $wac_filter) {
-			if (!isset($wac_filter["items"])) {
-				$wac_filter["items"] = [];
+		$superwoo_couponfilters = [];
+		foreach ($_POST["superwoo_couponfilters"] as $superwoo_coupon_filter) {
+			if (!isset($superwoo_coupon_filter["items"])) {
+				$superwoo_coupon_filter["items"] = [];
 			}
-			array_push($wacfilters, $wac_filter);
+			array_push($superwoo_couponfilters, $superwoo_coupon_filter);
 		}
-		update_post_meta($post_id, "wac_filters", $wacfilters);
+		update_post_meta($post_id, "superwoo_coupon_filters", $superwoo_couponfilters);
 		wp_send_json(["message" => "Updated SuccessFully", "status" => "success"]);
 	}
 }

@@ -12,11 +12,11 @@ require_once __DIR__ . '/vendor/autoload.php';
 require_once(ABSPATH . 'wp-admin/includes/plugin.php');
 
 /**
- * Wac_main class
+ * superwoo_coupon_main class
  *
- * @class Wac_main The class that holds the entire Wac_main plugin
+ * @class superwoo_coupon_main The class that holds the entire superwoo_coupon_main plugin
  */
-final class Wac_main
+final class superwoo_coupon_main
 {
     /**
      * Plugin version
@@ -33,7 +33,7 @@ final class Wac_main
     private $container = [];
 
     /**
-     * Constructor for the Wac_main class
+     * Constructor for the superwoo_coupon_main class
      *
      * Sets up all the appropriate hooks and actions
      * within our plugin.
@@ -47,19 +47,19 @@ final class Wac_main
     }
 
     /**
-     * Initializes the Wac_main() class
+     * Initializes the superwoo_coupon_main() class
      *
-     * Checks for an existing Wac_main() instance
+     * Checks for an existing superwoo_coupon_main() instance
      * and if it doesn't find one, creates it.
      *
-     * @return Wac_main|bool
+     * @return superwoo_coupon_main|bool
      */
     public static function init()
     {
         static $instance = false;
 
         if (!$instance) {
-            $instance = new Wac_main();
+            $instance = new superwoo_coupon_main();
         }
 
         return $instance;
@@ -100,12 +100,12 @@ final class Wac_main
      */
     public function define_constants()
     {
-        define('WAC_ASSETS_VERSION', self::version);
-        define('WAC_ASSETS_FILE', __FILE__);
-        define('WAC_ASSETS_PATH', dirname(WAC_ASSETS_FILE));
-        define('WAC_ASSETS_INCLUDES', WAC_ASSETS_PATH . '/includes');
-        define('WAC_ASSETS_URL', plugins_url('', WAC_ASSETS_FILE));
-        define('WAC_ASSETS_ASSETS', WAC_ASSETS_URL . '/assets');
+        define('superwoo_coupon_ASSETS_VERSION', self::version);
+        define('superwoo_coupon_ASSETS_FILE', __FILE__);
+        define('superwoo_coupon_ASSETS_PATH', dirname(superwoo_coupon_ASSETS_FILE));
+        define('superwoo_coupon_ASSETS_INCLUDES', superwoo_coupon_ASSETS_PATH . '/includes');
+        define('superwoo_coupon_ASSETS_URL', plugins_url('', superwoo_coupon_ASSETS_FILE));
+        define('superwoo_coupon_ASSETS_ASSETS', superwoo_coupon_ASSETS_URL . '/assets');
     }
 
     /**
@@ -148,7 +148,7 @@ final class Wac_main
      */
     public function activate()
     {
-        $installer = new WpAdroit\Wac_Coupon\Installer();
+        $installer = new superwoo_coupon\superwoo_coupon_Coupon\Installer();
         $installer->run();
     }
 
@@ -169,15 +169,15 @@ final class Wac_main
     public function includes()
     {
         if ($this->is_request('admin')) {
-            $this->container['admin'] = new WpAdroit\Wac_Coupon\Admin();
+            $this->container['admin'] = new superwoo_coupon\superwoo_coupon_Coupon\Admin();
         }
 
         if ($this->is_request('frontend')) {
-            $this->container['frontend'] = new WpAdroit\Wac_Coupon\Frontend();
+            $this->container['frontend'] = new superwoo_coupon\superwoo_coupon_Coupon\Frontend();
         }
 
         if ($this->is_request('ajax')) {
-            $this->container['ajax'] = new WpAdroit\Wac_Coupon\Ajax();
+            $this->container['ajax'] = new superwoo_coupon\superwoo_coupon_Coupon\Ajax();
         }
     }
 
@@ -202,9 +202,9 @@ final class Wac_main
     public function init_classes()
     {
         if ($this->is_request('ajax')) {
-            // $this->container['ajax'] =  new WpAdroit\Wac_Coupon\Ajax();
+            // $this->container['ajax'] =  new superwoo_coupon\superwoo_coupon_Coupon\Ajax();
         }
-        $this->container['assets'] = new WpAdroit\Wac_Coupon\Assets();
+        $this->container['assets'] = new superwoo_coupon\superwoo_coupon_Coupon\Assets();
     }
 
     /**
@@ -214,7 +214,7 @@ final class Wac_main
      */
     public function localization_setup()
     {
-        load_plugin_textdomain('superwoo', false, dirname(plugin_basename(__FILE__)) . '/languages/');
+        load_plugin_textdomain('superwoo_coupon', false, dirname(plugin_basename(__FILE__)) . '/languages/');
     }
 
     /**
@@ -243,19 +243,19 @@ final class Wac_main
                 return (!is_admin() || defined('DOING_AJAX')) && !defined('DOING_CRON');
         }
     }
-} // Wac_main
+} // superwoo_coupon_main
 
 /**
  * Initialize the main plugin
  *
- * @return \Wac_main|bool
+ * @return \superwoo_coupon_main|bool
  */
-function wac_main()
+function superwoo_coupon_main()
 {
-    return Wac_main::init();
+    return superwoo_coupon_main::init();
 }
 
 /**
  *  kick-off the plugin
  */
-wac_main();
+superwoo_coupon_main();

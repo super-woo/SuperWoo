@@ -5,16 +5,16 @@ import Toasted from 'vue-toasted';
 
 Vue.use(Toasted)
 
-Vue.component("wactype", require("./components/wactype.vue").default);
-Vue.component("wacfilter", require("./components/wacfilter.vue").default);
-Vue.component("wacdiscount", require("./components/wacdiscount.vue").default);
-Vue.component("wacrules", require("./components/wacrules.vue").default);
-Vue.component("wactabs", require("./components/wactabs.vue").default);
+Vue.component("supertype", require("./components/type.vue").default);
+Vue.component("superfilter", require("./components/filter.vue").default);
+Vue.component("superdiscount", require("./components/discount.vue").default);
+Vue.component("superrules", require("./components/rules.vue").default);
+Vue.component("supertabs", require("./components/tabs.vue").default);
 
 new Vue({
   el: "#post",
   data: {
-    wac_form: {
+    superwoo_coupon_form: {
       type: "product"
     }
   }

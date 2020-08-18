@@ -1,8 +1,8 @@
 <template>
-  <div class="wac_tags_component" v-click-outside="hide" @click="openMulti">
-    <ul class="wac_tags">
+  <div class="superwoo_coupon_tags_component" v-click-outside="hide" @click="openMulti">
+    <ul class="superwoo_coupon_tags">
       <li style="cursor: pointer;">
-        <span v-if="multiData.searchable" class="wac_select_search">
+        <span v-if="multiData.searchable" class="superwoo_coupon_select_search">
           <i class="dashicons dashicons-search"></i>
           <input @input="search" v-model="text" :placeholder="multiData.placeholder" type="text" />
         </span>
@@ -77,7 +77,7 @@ export default {
       };
       let root = this;
       axios
-        .post(wac_helper_obj.ajax_url, Qs.stringify(formData))
+        .post(superwoo_coupon_helper_obj.ajax_url, Qs.stringify(formData))
         .then((response) => {
           if (Array.isArray(response.data)) {
             root.options = response.data;
