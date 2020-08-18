@@ -44,7 +44,7 @@ class superwoo_coupon_Panels
 ?>
         <div id="superwoo_coupon_tabs_screen" class="panel woocommerce_options_panel">
             <div id="post">
-                <superwoo_coupontabs />
+                <supertabs />
             </div>
         </div>
 <?php

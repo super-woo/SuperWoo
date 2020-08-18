@@ -97,9 +97,12 @@ class superwoo_coupon_auto
 		if (count($coupons) != 0) {
 			foreach ($coupons as $coupon) {
 				$post_meta = get_post_meta($coupon->ID, "superwoo_coupon_coupon_panel", true);
-				if (!empty($post_meta["list_id"]) || $post_meta["list_id"] != '') {
-					array_push($superwoo_coupon_coupons, $post_meta["list_id"]);
+				if ($post_meta != '') {
+					if (!empty($post_meta["list_id"]) || $post_meta["list_id"] != '') {
+						array_push($superwoo_coupon_coupons, $post_meta["list_id"]);
+					}
 				}
+				
 			}
 			foreach ($posts as $post) {
 				if (!in_array($post->ID, $superwoo_coupon_coupons) && $first_coupon != $post->ID) {
