@@ -40,19 +40,21 @@ class superwoo_coupon_Coupon
 	{
 		if ($column == "superwoo_coupon_type") {
 			$superwoo_couponMain = get_post_meta($post_id, "superwoo_coupon_coupon_main", true);
-			switch ($superwoo_couponMain["type"]) {
-				case 'product':
-					echo "<pre class='superwoo_coupon_pre_column'>Product Adjustment</pre>";
-					break;
-				case 'cart':
-					echo "<pre class='superwoo_coupon_pre_column'>Cart Adjustment</pre>";
-					break;
-				case 'bulk':
-					echo "<pre class='superwoo_coupon_pre_column'>Bulk Discount</pre>";
-					break;
+			if($superwoo_couponMain){ 
+				switch ( $superwoo_couponMain["type"]) {
+					case 'product':
+						echo "<pre class='superwoo_coupon_pre_column'>Product Adjustment</pre>";
+						break;
+					case 'cart':
+						echo "<pre class='superwoo_coupon_pre_column'>Cart Adjustment</pre>";
+						break;
+					case 'bulk':
+						echo "<pre class='superwoo_coupon_pre_column'>Bulk Discount</pre>";
+						break;
 
-				default:
-					break;
+					default:
+						break;
+				}
 			}
 		}
 	}

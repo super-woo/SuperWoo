@@ -53,7 +53,8 @@ class superwoo_coupon_auto
 		}
 		foreach ($woocoupons as $woocoupon) {
 			$superwoo_coupon_main = get_post_meta($woocoupon->ID, "superwoo_coupon_coupon_main", true);
-			if ($superwoo_coupon_main["type"] != "product") {
+			  
+			if ($superwoo_coupon_main && $superwoo_coupon_main["type"] != "product") {
 				if ($first_coupon == 0) {
 					WC()->session->__unset("superwoo_coupon_product_coupon");
 				}
