@@ -1,10 +1,10 @@
 === SuperWoo ===
 
-WooCommerce Missing Addons for your site
+Supercharge your WooCommerce powered store!
 
 == Description ==
 
-WooCommerce Missing Addons for your site
+Supercharge your WooCommerce powered store!
 
 
 = Features =

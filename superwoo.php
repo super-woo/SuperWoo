@@ -2,7 +2,7 @@
 /*
 Plugin Name: SuperWoo
 Plugin URI:
-Description: WooCommerce Missing Addons for your site
+Description: Supercharge your WooCommerce powered store!
 Version: 1.0.0
 Author: SpringDevs
 Author URI: https://springdevs.com/
