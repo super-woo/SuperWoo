@@ -1,33 +1,29 @@
 === SuperWoo ===
 Contributors: naminbd, istiaqnirab
 Donate link: https://superwoo.net/
-Tags: Discount
+Tags: Discount, Coupon
 Requires at least: 4.0
-Tested up to: 5.4
+Tested up to: 5.5
 Stable tag: trunk
-Requires PHP: 5.6
+Requires PHP: 7.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-WooCommerce Missing Addons for your site
+Supercharge your WooCommerce powered store!
 
 == Description ==
 
-WooCommerce Missing Addons for your site
+The most powerful extensions for your WooCommerce store
 
 
 = Features =
  **WooCommerce Advance Discount **
-   * Percentage based discounts in WooCommerce
-   * Bulk discount ( cart subtotal )
-   * Cart based percentage discount
-   * Number of line items (count) based discount ( rules )
-   * Product Based Discount
-   * Select woo-coupon from basic coupon panel
-   * First order coupon for login users
-   * Apply coupon via an url
-   * Auto Coupon Features
-   * Apply coupon for specific products
+   * Automatic Discount for first order.
+   * Apply coupon via URL.
+   * Restrict using multiple coupon.
+   * Show/hide discount on cart and checkout page.
+   * Custom slug support for coupon URL.
+   * Set conditions to apply coupon.
 
 
 

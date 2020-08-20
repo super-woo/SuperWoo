@@ -2,7 +2,7 @@
 /*
 Plugin Name: SuperWoo
 Plugin URI: https://superwoo.net/
-Description: WooCommerce Missing Addons for your site
+Description: Supercharge your WooCommerce powered store!
 Version: 1.0.0
 Author: Super Woo
 Author URI: https://superwoo.net/
