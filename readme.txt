@@ -9,12 +9,11 @@ Requires PHP: 7.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Supercharge your WooCommerce powered store!
+ Supercharge your WooCommerce powered store!
 
 == Description ==
 
-The most powerful extensions for your WooCommerce store
-
+ Supercharge your WooCommerce powered store!
 
 = Features =
  **WooCommerce Advance Discount **
