@@ -1,6 +1,6 @@
 === SuperWoo ===
 Contributors: naminbd, istiaqnirab
-Donate link: https://superwoo.net/
+Donate link: 
 Tags: Discount, Coupon
 Requires at least: 4.0
 Tested up to: 5.5
