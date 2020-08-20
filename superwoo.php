@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: SuperWoo
-Plugin URI: https://superwoo.net/
+Plugin URI:
 Description: WooCommerce Missing Addons for your site
 Version: 1.0.0
-Author: Super Woo
-Author URI: https://superwoo.net/
+Author: SpringDevs
+Author URI: https://springdevs.com/
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: superwoo
@@ -13,7 +13,7 @@ Domain Path: /languages
 */
 
 /**
- * Copyright (c) 2020 SuperWoo (email: contact@superwoo.net). All rights reserved.
+ * Copyright (c) 2020 SpringDevs (email: contact@springdevs.com). All rights reserved.
  *
  * Released under the GPL license
  * http://www.opensource.org/licenses/gpl-license.php
