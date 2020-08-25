@@ -1,10 +1,10 @@
 <?php
 
-namespace superwoo_coupon\superwoo_coupon_Coupon;
+namespace springdevs\WooAdvanceCoupon;
 
-use superwoo_coupon\superwoo_coupon_Coupon\Admin\superwoo_coupon_Coupon;
-use superwoo_coupon\superwoo_coupon_Coupon\Admin\superwoo_coupon_Panels;
-use superwoo_coupon\superwoo_coupon_Coupon\Admin\superwoo_coupon_Setting;
+use springdevs\WooAdvanceCoupon\Admin\sdwac_Coupon;
+use springdevs\WooAdvanceCoupon\Admin\sdwac_Panels;
+use springdevs\WooAdvanceCoupon\Admin\sdwac_Setting;
 
 /**
  * The admin class
@@ -19,9 +19,9 @@ class Admin
     {
         $this->dispatch_actions();
         $this->create_options();
-        new superwoo_coupon_Coupon;
-        new superwoo_coupon_Panels;
-        new superwoo_coupon_Setting;
+        new sdwac_Coupon;
+        new sdwac_Panels;
+        new sdwac_Setting;
     }
 
     /**
@@ -38,24 +38,24 @@ class Admin
      **/
     public function create_options()
     {
-        if (!get_option("superwoo_coupon_first_time_purchase_coupon")) {
-            add_option("superwoo_coupon_first_time_purchase_coupon", 0);
+        if (!get_option("sdwac_first_time_purchase_coupon")) {
+            add_option("sdwac_first_time_purchase_coupon", 0);
         }
 
-        if (!get_option("superwoo_coupon_first_time_purchase_coupon_label")) {
-            add_option("superwoo_coupon_first_time_purchase_coupon_label", "Discounted Amount");
+        if (!get_option("sdwac_first_time_purchase_coupon_label")) {
+            add_option("sdwac_first_time_purchase_coupon_label", "Discounted Amount");
         }
 
-        if (!get_option("superwoo_coupon_woo_setting_show_product_discount")) {
-            add_option("superwoo_coupon_woo_setting_show_product_discount", "yes");
+        if (!get_option("sdwac_show_product_discount")) {
+            add_option("sdwac_show_product_discount", "yes");
         }
 
-        if (!get_option("superwoo_coupon_woo_setting_multi")) {
-            add_option("superwoo_coupon_woo_setting_multi", "yes");
+        if (!get_option("sdwac_multi")) {
+            add_option("sdwac_multi", "yes");
         }
 
-        if (!get_option("superwoo_coupon_woo_setting_url")) {
-            add_option("superwoo_coupon_woo_setting_url", "coupon");
+        if (!get_option("sdwac_url")) {
+            add_option("sdwac_url", "coupon");
         }
     }
 }

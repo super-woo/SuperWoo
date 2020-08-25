@@ -1,12 +1,12 @@
 <template>
   <div class="options_group">
     <p class="form-field">
-      <label for="superwoo_coupon_feature">Coupon Feature</label>
+      <label for="sdwac_coupon_feature">Coupon Feature</label>
       <select
         class="select short"
-        name="superwoo_coupon_feature"
-        id="superwoo_coupon_feature"
-        v-model="superwoo_coupon_feature"
+        name="sdwac_coupon_feature"
+        id="sdwac_coupon_feature"
+        v-model="sdwac_coupon_feature"
       >
         <option value>Select Coupon Feature</option>
         <option
@@ -39,7 +39,7 @@
 export default {
   data() {
     return {
-      superwoo_coupon_feature: "",
+      sdwac_coupon_feature: "",
       overwrite_discount: null,
       coupons: [],
     };
@@ -51,12 +51,12 @@ export default {
   methods: {
     getLists() {
       let formData = {
-        action: "superwoo_coupon_get_woocoupons",
-        post_id: superwoo_coupon_post.id,
+        action: "sdwac_coupon_get_woocoupons",
+        post_id: sdwac_coupon_post.id,
       };
       let root = this;
       axios
-        .post(superwoo_coupon_helper_obj.ajax_url, Qs.stringify(formData))
+        .post(sdwac_coupon_helper_obj.ajax_url, Qs.stringify(formData))
         .then((response) => {
           root.coupons = response.data;
         })
@@ -66,14 +66,14 @@ export default {
     },
     getData() {
       let formData = {
-        action: "superwoo_coupon_get_superwoo_coupon_panel",
-        post_id: superwoo_coupon_post.id,
+        action: "sdwac_coupon_get_sdwac_coupon_panel",
+        post_id: sdwac_coupon_post.id,
       };
       let root = this;
       axios
-        .post(superwoo_coupon_helper_obj.ajax_url, Qs.stringify(formData))
+        .post(sdwac_coupon_helper_obj.ajax_url, Qs.stringify(formData))
         .then((response) => {
-          root.superwoo_coupon_feature = response.data.list_id;
+          root.sdwac_coupon_feature = response.data.list_id;
           root.overwrite_discount = response.data.overwrite_discount;
         })
         .catch((error) => {

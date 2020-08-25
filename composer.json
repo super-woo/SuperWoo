@@ -1,19 +1,17 @@
 {
-    "name": "wpadroit/superwoo",
+    "name": "springdevs/wc-missing-addons",
     "description": "WooCommerce Missing Addons",
     "type": "wordpress-plugin",
     "license": "GPLv2",
-    "authors": [
-        {
-            "name": "WpAdroit",
-            "email": "contact@superwoo.net"
-        }
-    ],
+    "authors": [{
+        "name": "SpringDevs",
+        "email": "contact@spingdevs.net"
+    }],
     "minimum-stability": "dev",
     "require": {},
     "autoload": {
         "psr-4": {
-            "WpAdroit\\SuperWoo\\": "includes/"
+            "SpringDevs\\WcMissingAddons\\": "includes/"
         },
         "files": [
             "includes/functions.php"

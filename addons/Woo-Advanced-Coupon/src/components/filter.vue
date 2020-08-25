@@ -1,21 +1,21 @@
 <template>
   <div>
-    <div v-if="loading" class="spinner is-active superwoo_coupon_spinner"></div>
+    <div v-if="loading" class="spinner is-active sdwac_coupon_spinner"></div>
     <div v-else>
       <div
-        class="superwoo_coupon-flex superwoo_coupon-filter"
-        v-for="(superwoo_couponfilter, index) in superwoo_couponfilters"
-        :key="'superwoo_couponfilter-' + index"
+        class="sdwac_coupon-flex sdwac_coupon-filter"
+        v-for="(sdwac_couponfilter, index) in sdwac_couponfilters"
+        :key="'sdwac_couponfilter-' + index"
       >
-        <div class="superwoo_coupon-col-3">
-          <div class="superwoo_coupon-form">
-            <label for="superwoo_coupon_filter_type">
+        <div class="sdwac_coupon-col-3">
+          <div class="sdwac_coupon-form">
+            <label for="sdwac_coupon_filter_type">
               <strong>Type</strong>
             </label>
             <select
-              id="superwoo_coupon_filter_type"
-              name="superwoo_coupon_filter_type[]"
-              v-model="superwoo_couponfilter.type"
+              id="sdwac_coupon_filter_type"
+              name="sdwac_coupon_filter_type[]"
+              v-model="sdwac_couponfilter.type"
             >
               <option
                 v-for="(filterType, index) in filterTypes"
@@ -25,15 +25,15 @@
             </select>
           </div>
         </div>
-        <div class="superwoo_coupon-filter-list" v-if="checkItemsAvaiable(superwoo_couponfilter.type)">
-          <div class="superwoo_coupon-form">
-            <label for="superwoo_coupon_filter_lists">
+        <div class="sdwac_coupon-filter-list" v-if="checkItemsAvaiable(sdwac_couponfilter.type)">
+          <div class="sdwac_coupon-form">
+            <label for="sdwac_coupon_filter_lists">
               <strong>Lists Type</strong>
             </label>
             <select
-              id="superwoo_coupon_filter_lists"
-              name="superwoo_coupon_filter_lists[]"
-              v-model="superwoo_couponfilter.lists"
+              id="sdwac_coupon_filter_lists"
+              name="sdwac_coupon_filter_lists[]"
+              v-model="sdwac_couponfilter.lists"
             >
               <option
                 v-for="(ListsType, index) in ListsTypes"
@@ -43,10 +43,10 @@
             </select>
           </div>
         </div>
-        <div class="superwoo_coupon-col-3" v-if="checkItemsAvaiable(superwoo_couponfilter.type)">
-          <div class="superwoo_coupon-form">
-            <label for="superwoo_coupon_filter_products">
-              <strong>{{ getItemsLabel(superwoo_couponfilter.type) }}</strong>
+        <div class="sdwac_coupon-col-3" v-if="checkItemsAvaiable(sdwac_couponfilter.type)">
+          <div class="sdwac_coupon-form">
+            <label for="sdwac_coupon_filter_products">
+              <strong>{{ getItemsLabel(sdwac_couponfilter.type) }}</strong>
             </label>
             <customSelect
               v-on:selectOptions="selectOptions"
@@ -54,22 +54,22 @@
                 options: [],
                 searchable: true,
                 placeholder: 'Enter 3 words',
-                search_action: getItemsAction(superwoo_couponfilter.type),
+                search_action: getItemsAction(sdwac_couponfilter.type),
               }"
-              :defaultOption="superwoo_couponfilter.items"
+              :defaultOption="sdwac_couponfilter.items"
               :multiName="index"
             ></customSelect>
           </div>
         </div>
         <div
-          v-if="superwoo_couponfilters.length > 1"
+          v-if="sdwac_couponfilters.length > 1"
           @click="removeFilter(index)"
-          class="superwoo_coupon-filter-close"
+          class="sdwac_coupon-filter-close"
         >
           <span class="dashicons dashicons-no-alt"></span>
         </div>
       </div>
-      <div class="superwoo_coupon_buttons">
+      <div class="sdwac_coupon_buttons">
         <button type="button" @click="update" class="button-primary">Save</button>
         <button type="button" @click="cloneFilter" class="button-primary">Add Filter</button>
       </div>
@@ -80,7 +80,7 @@
 <script>
 import customSelect from "./helpers/customSelect";
 export default {
-  name: "superwoo_couponfilter",
+  name: "sdwac_couponfilter",
   props: ["nonce"],
   data() {
     return {
@@ -90,7 +90,7 @@ export default {
         { label: "In List", value: "inList" },
         { label: "Not In List", value: "noList" },
       ],
-      superwoo_couponfilters: [
+      sdwac_couponfilters: [
         {
           type: "all_products",
           lists: "inList",
@@ -131,27 +131,27 @@ export default {
       return action;
     },
     selectOptions(value) {
-      this.superwoo_couponfilters[value.name].items = value.selectOption;
+      this.sdwac_couponfilters[value.name].items = value.selectOption;
     },
     cloneFilter() {
-      this.superwoo_couponfilters.push({
+      this.sdwac_couponfilters.push({
         type: "all_products",
         lists: "inList",
         items: [],
       });
     },
     removeFilter(index) {
-      this.superwoo_couponfilters.splice(index, 1);
+      this.sdwac_couponfilters.splice(index, 1);
     },
     update() {
       let formData = {
-        action: "superwoo_coupon_save_filters",
-        superwoo_couponfilters: this.superwoo_couponfilters,
-        superwoo_coupon_nonce: this.nonce,
-        post_id: superwoo_coupon_post.id,
+        action: "sdwac_coupon_save_filters",
+        sdwac_couponfilters: this.sdwac_couponfilters,
+        sdwac_coupon_nonce: this.nonce,
+        post_id: sdwac_coupon_post.id,
       };
       axios
-        .post(superwoo_coupon_helper_obj.ajax_url, Qs.stringify(formData))
+        .post(sdwac_coupon_helper_obj.ajax_url, Qs.stringify(formData))
         .then((response) => {
           this.$toasted.show(response.data.message, {
             position: "top-center",
@@ -165,18 +165,18 @@ export default {
     getFilters() {
       this.loading = true;
       let formData = {
-        action: "superwoo_coupon_get_filters",
-        post_id: superwoo_coupon_post.id,
+        action: "sdwac_coupon_get_filters",
+        post_id: sdwac_coupon_post.id,
       };
       let root = this;
       axios
-        .post(superwoo_coupon_helper_obj.ajax_url, Qs.stringify(formData))
+        .post(sdwac_coupon_helper_obj.ajax_url, Qs.stringify(formData))
         .then((response) => {
           if (
             response.data.post_meta != [] &&
             response.data.post_meta != null
           ) {
-            root.superwoo_couponfilters = response.data.post_meta;
+            root.sdwac_couponfilters = response.data.post_meta;
           }
           response.data.filters_data.forEach((element) => {
             root.filterTypes.push(element);

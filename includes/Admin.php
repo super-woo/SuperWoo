@@ -1,6 +1,8 @@
 <?php
 
-namespace WpAdroit\SuperWoo;
+namespace SpringDevs\WcMissingAddons;
+
+use SpringDevs\WcMissingAddons\Admin\Menu;
 
 /**
  * The admin class
@@ -14,7 +16,7 @@ class Admin
     public function __construct()
     {
         $this->dispatch_actions();
-        new Admin\Menu();
+        new Menu;
     }
 
     /**

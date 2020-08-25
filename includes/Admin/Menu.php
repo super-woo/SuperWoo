@@ -1,12 +1,11 @@
 <?php
 
-namespace WpAdroit\SuperWoo\Admin;
+namespace SpringDevs\WcMissingAddons\Admin;
 
 /**
  * Admin Pages Handler
  *
  * Class Menu
- * @package WpAdroit\SuperWoo\Admin
  */
 class Menu
 {
@@ -25,11 +24,9 @@ class Menu
      */
     public function admin_menu()
     {
-        $parent_slug = 'superwoo-addons';
+        $parent_slug = 'springdevs-addons';
         $capability = 'manage_options';
-
-        $hook = add_menu_page(__('SuperWoo Addons', 'superwoo'), __('SuperWoo', 'superwoo'), $capability, $parent_slug, [$this, 'plugin_page'], 'dashicons-image-filter', 40);
-
+        $hook = add_menu_page(__('Missing Addons', 'springdevs_wma'), __('Missing Addons', 'springdevs_wma'), $capability, $parent_slug, [$this, 'plugin_page'], 'dashicons-image-filter', 40);
         add_action('load-' . $hook, [$this, 'init_hooks']);
     }
 

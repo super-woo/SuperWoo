@@ -7,18 +7,18 @@ namespace Composer\Autoload;
 class ComposerStaticInit8eb13ae930a05be9f0ebad6b6247126a
 {
     public static $files = array (
-        'a916fe695c4a2934c439911fed78df56' => __DIR__ . '/../..' . '/includes/functions.php',
+        'daeb179b594b370a24e09ef4dd7d0a13' => __DIR__ . '/../..' . '/includes/functions.php',
     );
 
     public static $prefixLengthsPsr4 = array (
-        'W' => 
+        'S' => 
         array (
-            'WpAdroit\\SuperWoo\\' => 18,
+            'SpringDevs\\WcMissingAddons\\' => 27,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'WpAdroit\\SuperWoo\\' => 
+        'SpringDevs\\WcMissingAddons\\' => 
         array (
             0 => __DIR__ . '/../..' . '/includes',
         ),

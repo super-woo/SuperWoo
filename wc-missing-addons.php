@@ -1,14 +1,14 @@
 <?php
 /*
-Plugin Name: SuperWoo
+Plugin Name: Missing Addons for WooCommerce
 Plugin URI:
-Description: Supercharge your WooCommerce powered store!
+Description: Some PowerFull Addon for WooCommerce store!
 Version: 1.0.0
 Author: SpringDevs
 Author URI: https://springdevs.com/
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: superwoo
+Text Domain: springdevs_wma
 Domain Path: /languages
 */
 
@@ -46,11 +46,11 @@ if (!defined('ABSPATH')) {
 require_once __DIR__ . '/vendor/autoload.php';
 
 /**
- * SuperWoo_Main class
+ * springdevs_wma_Main class
  *
- * @class SuperWoo_Main The class that holds the entire SuperWoo_Main plugin
+ * @class springdevs_wma_Main The class that holds the entire springdevs_wma_Main plugin
  */
-final class SuperWoo_Main
+final class springdevs_wma_Main
 {
     /**
      * Plugin version
@@ -67,7 +67,7 @@ final class SuperWoo_Main
     private $container = [];
 
     /**
-     * Constructor for the SuperWoo_Main class
+     * Constructor for the springdevs_wma_Main class
      *
      * Sets up all the appropriate hooks and actions
      * within our plugin.
@@ -85,19 +85,19 @@ final class SuperWoo_Main
     }
 
     /**
-     * Initializes the SuperWoo_Main() class
+     * Initializes the springdevs_wma_Main() class
      *
-     * Checks for an existing SuperWoo_Main() instance
+     * Checks for an existing springdevs_wma_Main() instance
      * and if it doesn't find one, creates it.
      *
-     * @return SuperWoo_Main|bool
+     * @return springdevs_wma_Main|bool
      */
     public static function init()
     {
         static $instance = false;
 
         if (!$instance) {
-            $instance = new SuperWoo_Main();
+            $instance = new springdevs_wma_Main();
         }
 
         return $instance;
@@ -138,12 +138,12 @@ final class SuperWoo_Main
      */
     public function define_constants()
     {
-        define('SUPERWOO_ASSETS_VERSION', self::version);
-        define('SUPERWOO_ASSETS_FILE', __FILE__);
-        define('SUPERWOO_ASSETS_PATH', dirname(SUPERWOO_ASSETS_FILE));
-        define('SUPERWOO_ASSETS_INCLUDES', SUPERWOO_ASSETS_PATH . '/includes');
-        define('SUPERWOO_ASSETS_URL', plugins_url('', SUPERWOO_ASSETS_FILE));
-        define('SUPERWOO_ASSETS_ASSETS', SUPERWOO_ASSETS_URL . '/assets');
+        define('springdevs_wma_ASSETS_VERSION', self::version);
+        define('springdevs_wma_ASSETS_FILE', __FILE__);
+        define('springdevs_wma_ASSETS_PATH', dirname(springdevs_wma_ASSETS_FILE));
+        define('springdevs_wma_ASSETS_INCLUDES', springdevs_wma_ASSETS_PATH . '/includes');
+        define('springdevs_wma_ASSETS_URL', plugins_url('', springdevs_wma_ASSETS_FILE));
+        define('springdevs_wma_ASSETS_ASSETS', springdevs_wma_ASSETS_URL . '/assets');
     }
 
     /**
@@ -164,7 +164,7 @@ final class SuperWoo_Main
      */
     public function activate()
     {
-        $installer = new WpAdroit\SuperWoo\Installer();
+        $installer = new \SpringDevs\WcMissingAddons\Installer();
         $installer->run();
     }
 
@@ -185,15 +185,15 @@ final class SuperWoo_Main
     public function includes()
     {
         if ($this->is_request('admin')) {
-            $this->container['admin'] = new WpAdroit\SuperWoo\Admin();
+            $this->container['admin'] = new \SpringDevs\WcMissingAddons\Admin();
         }
 
         if ($this->is_request('frontend')) {
-            $this->container['frontend'] = new WpAdroit\SuperWoo\Frontend();
+            $this->container['frontend'] = new \SpringDevs\WcMissingAddons\Frontend();
         }
 
         if ($this->is_request('ajax')) {
-            // require_once SUPERWOO_ASSETS_INCLUDES . '/class-ajax.php';
+            // require_once springdevs_wma_ASSETS_INCLUDES . '/class-ajax.php';
         }
     }
 
@@ -218,8 +218,8 @@ final class SuperWoo_Main
         $addons = [
             "Woo-Advanced-Coupon" => "woo-advance-coupon.php"
         ];
-        do_action("register_superwoo_addons", $addons);
-        update_option("superwoo_addons", $addons);
+        do_action("register_springdevs_wma_addons", $addons);
+        update_option("springdevs_wma_addons", $addons);
         return;
     }
 
@@ -228,7 +228,7 @@ final class SuperWoo_Main
      **/
     public function getAddons()
     {
-        $addons = get_option("superwoo_addons");
+        $addons = get_option("springdevs_wma_addons");
         foreach ($addons as $key => $value) {
             require_once __DIR__ . '/addons/' . $key . '/' . $value;
         }
@@ -243,11 +243,11 @@ final class SuperWoo_Main
     public function init_classes()
     {
         if ($this->is_request('ajax')) {
-            // $this->container['ajax'] =  new WpAdroit\SuperWoo\Ajax();
+            // $this->container['ajax'] =  new WpAdroit\springdevs_wma\Ajax();
         }
 
-        $this->container['api']    = new WpAdroit\SuperWoo\Api();
-        $this->container['assets'] = new WpAdroit\SuperWoo\Assets();
+        $this->container['api']    = new \SpringDevs\WcMissingAddons\Api();
+        $this->container['assets'] = new \SpringDevs\WcMissingAddons\Assets();
     }
 
     /**
@@ -257,7 +257,7 @@ final class SuperWoo_Main
      */
     public function localization_setup()
     {
-        load_plugin_textdomain('superwoo', false, dirname(plugin_basename(__FILE__)) . '/languages/');
+        load_plugin_textdomain('springdevs_wma', false, dirname(plugin_basename(__FILE__)) . '/languages/');
     }
 
     /**
@@ -286,19 +286,19 @@ final class SuperWoo_Main
                 return (!is_admin() || defined('DOING_AJAX')) && !defined('DOING_CRON');
         }
     }
-} // SuperWoo_Main
+} // springdevs_wma_Main
 
 /**
  * Initialize the main plugin
  *
- * @return \SuperWoo_Main|bool
+ * @return \springdevs_wma_Main|bool
  */
-function superwoo_main()
+function springdevs_wma_main()
 {
-    return SuperWoo_Main::init();
+    return springdevs_wma_Main::init();
 }
 
 /**
  *  kick-off the plugin
  */
-superwoo_main();
+springdevs_wma_main();

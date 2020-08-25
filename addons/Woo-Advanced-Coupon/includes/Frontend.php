@@ -1,10 +1,10 @@
 <?php
 
-namespace superwoo_coupon\superwoo_coupon_Coupon;
+namespace springdevs\WooAdvanceCoupon;
 
-use superwoo_coupon\superwoo_coupon_Coupon\Frontend\superwoo_coupon_auto;
-use superwoo_coupon\superwoo_coupon_Coupon\Frontend\superwoo_coupon_front;
-use superwoo_coupon\superwoo_coupon_Coupon\Frontend\superwoo_coupon_url;
+use springdevs\WooAdvanceCoupon\Frontend\sdwac_auto;
+use springdevs\WooAdvanceCoupon\Frontend\sdwac_front;
+use springdevs\WooAdvanceCoupon\Frontend\sdwac_url;
 
 /**
  * Frontend handler class
@@ -16,8 +16,8 @@ class Frontend
      */
     public function __construct()
     {
-        new superwoo_coupon_front;
-        new superwoo_coupon_url;
-        new superwoo_coupon_auto;
+        new sdwac_front;
+        new sdwac_url;
+        new sdwac_auto;
     }
 }

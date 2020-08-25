@@ -1,6 +1,6 @@
 <?php
 
-namespace superwoo_coupon\superwoo_coupon_Coupon\Frontend\Helpers;
+namespace springdevs\WooAdvanceCoupon\Frontend\Helpers;
 
 use WC_Coupon;
 use WC_Discounts;
@@ -11,25 +11,25 @@ use WC_Discounts;
 class Validator
 {
 
-    static public function check($coupon = null, $post_id = null, $superwoo_coupon_id = null)
+    static public function check($coupon = null, $post_id = null, $sdwac_coupon_id = null)
     {
-        $result = self::superwoo_coupon_fiter_validate($coupon, $post_id, $superwoo_coupon_id) ? true : false;
+        $result = self::sdwac_coupon_fiter_validate($coupon, $post_id, $sdwac_coupon_id) ? true : false;
         if ($result) {
-            $result = self::superwoo_coupon_multi_validate($coupon, $post_id) ? true : false;
+            $result = self::sdwac_coupon_multi_validate($coupon, $post_id) ? true : false;
         }
         if ($result) {
-            $result = self::superwoo_coupon_rules_validate($coupon, $post_id, $superwoo_coupon_id) ? true : false;
+            $result = self::sdwac_coupon_rules_validate($coupon, $post_id, $sdwac_coupon_id) ? true : false;
         }
-        $result = apply_filters("superwoo_coupon_validator", $result);
+        $result = apply_filters("sdwac_coupon_validator", $result);
         return $result;
     }
 
-    static public function superwoo_coupon_multi_validate($coupon, $post_id)
+    static public function sdwac_coupon_multi_validate($coupon, $post_id)
     {
-        $superwoo_coupon_woo_setting_multi = get_option("superwoo_coupon_woo_setting_multi");
+        $sdwac_coupon_woo_setting_multi = get_option("sdwac_woo_setting_multi");
         $applied_coupons = WC()->cart->get_applied_coupons();
         if (count($applied_coupons) > 1) {
-            if ($superwoo_coupon_woo_setting_multi == "no" & $applied_coupons[0] != $coupon) {
+            if ($sdwac_coupon_woo_setting_multi == "no" & $applied_coupons[0] != $coupon) {
                 wc_clear_notices();
                 return false;
             }
@@ -37,22 +37,22 @@ class Validator
         return true;
     }
 
-    static public function superwoo_coupon_fiter_validate($coupon, $post_id, $superwoo_coupon_id)
+    static public function sdwac_coupon_fiter_validate($coupon, $post_id, $sdwac_coupon_id)
     {
         $result = true;
-        if ($superwoo_coupon_id == null) {
-            $post_meta = get_post_meta($post_id, "superwoo_coupon_coupon_panel", true);
+        if ($sdwac_coupon_id == null) {
+            $post_meta = get_post_meta($post_id, "sdwac_coupon_panel", true);
             if (empty($post_meta["list_id"])) {
                 return $result;
             }
-            $filters = get_post_meta($post_meta["list_id"], "superwoo_coupon_filters", true);
-            $superwoo_coupon_main = get_post_meta($post_meta["list_id"], "superwoo_coupon_coupon_main", true);
+            $filters = get_post_meta($post_meta["list_id"], "sdwac_coupon_filters", true);
+            $sdwac_coupon_main = get_post_meta($post_meta["list_id"], "sdwac_coupon_main", true);
         } else {
-            $filters = get_post_meta($superwoo_coupon_id, "superwoo_coupon_filters", true);
-            $superwoo_coupon_main = get_post_meta($superwoo_coupon_id, "superwoo_coupon_coupon_main", true);
+            $filters = get_post_meta($sdwac_coupon_id, "sdwac_coupon_filters", true);
+            $sdwac_coupon_main = get_post_meta($sdwac_coupon_id, "sdwac_coupon_main", true);
         }
 
-        if (!$filters || !$superwoo_coupon_main || $superwoo_coupon_main["type"] == "product") {
+        if (!$filters || !$sdwac_coupon_main || $sdwac_coupon_main["type"] == "product") {
             return $result;
         }
 
@@ -62,10 +62,10 @@ class Validator
                 break;
             } else {
                 $products = WC()->cart->get_cart();
-                $superwoo_coupon_products = [];
+                $sdwac_coupon_products = [];
                 $productLists = [];
                 foreach ($filter["items"] as $filterItem) {
-                    array_push($superwoo_coupon_products, $filterItem["value"]);
+                    array_push($sdwac_coupon_products, $filterItem["value"]);
                 }
                 foreach ($products as $values) {
                     array_push($productLists, $values["product_id"]);
@@ -74,16 +74,16 @@ class Validator
                     return (string) $piece;
                 }, $productLists);
                 if ($filter["lists"] == "inList") {
-                    foreach ($superwoo_coupon_products as $superwoo_coupon_product) {
-                        $match = in_array($superwoo_coupon_product, $productLists);
+                    foreach ($sdwac_coupon_products as $sdwac_coupon_product) {
+                        $match = in_array($sdwac_coupon_product, $productLists);
                         if ($match == false) {
                             $result = false;
                             break;
                         }
                     }
                 } else {
-                    foreach ($superwoo_coupon_products as $superwoo_coupon_product) {
-                        $result = in_array($superwoo_coupon_product, $productLists);
+                    foreach ($sdwac_coupon_products as $sdwac_coupon_product) {
+                        $result = in_array($sdwac_coupon_product, $productLists);
                         if ($result == true) {
                             break;
                         }
@@ -94,21 +94,21 @@ class Validator
         return $result;
     }
 
-    static function superwoo_coupon_rules_validate($coupon, $post_id, $superwoo_coupon_id)
+    static function sdwac_coupon_rules_validate($coupon, $post_id, $sdwac_coupon_id)
     {
         $result = true;
-        if ($superwoo_coupon_id == null) {
-            $post_meta = get_post_meta($post_id, "superwoo_coupon_coupon_panel", true);
+        if ($sdwac_coupon_id == null) {
+            $post_meta = get_post_meta($post_id, "sdwac_coupon_panel", true);
             if (empty($post_meta["list_id"])) {
                 return $result;
             } else {
-                $rules = get_post_meta($post_meta["list_id"], "superwoo_coupon_coupon_rules", true);
+                $rules = get_post_meta($post_meta["list_id"], "sdwac_coupon_rules", true);
                 if (!$rules || $rules["rules"] == null) {
                     return $result;
                 }
             }
         } else {
-            $rules = get_post_meta($superwoo_coupon_id, "superwoo_coupon_coupon_rules", true);
+            $rules = get_post_meta($sdwac_coupon_id, "sdwac_coupon_rules", true);
             if (!$rules || $rules["rules"] == null) {
                 return $result;
             }
@@ -130,7 +130,7 @@ class Validator
                                 $result = false;
                             }
                         } else if ($calculate == "from_filter") {
-                            $amount = self::superwoo_coupon_cart_filter_subtotal($post_meta["list_id"]);
+                            $amount = self::sdwac_coupon_cart_filter_subtotal($post_meta["list_id"]);
                             if (!($amount < (float) $value)) {
                                 $result = false;
                             }
@@ -143,7 +143,7 @@ class Validator
                                 $result = false;
                             }
                         } else if ($calculate == "from_filter") {
-                            $amount = self::superwoo_coupon_cart_filter_subtotal($post_meta["list_id"]);
+                            $amount = self::sdwac_coupon_cart_filter_subtotal($post_meta["list_id"]);
                             if (!($amount <= (float) $value)) {
                                 $result = false;
                             }
@@ -156,7 +156,7 @@ class Validator
                                 $result = false;
                             }
                         } else if ($calculate == "from_filter") {
-                            $amount = self::superwoo_coupon_cart_filter_subtotal($post_meta["list_id"]);
+                            $amount = self::sdwac_coupon_cart_filter_subtotal($post_meta["list_id"]);
                             if (!($amount > (float) $value)) {
                                 $result = false;
                             }
@@ -169,7 +169,7 @@ class Validator
                                 $result = false;
                             }
                         } else if ($calculate >= "from_filter") {
-                            $amount = self::superwoo_coupon_cart_filter_subtotal($post_meta["list_id"]);
+                            $amount = self::sdwac_coupon_cart_filter_subtotal($post_meta["list_id"]);
                             if (!($amount < (float) $value)) {
                                 $result = false;
                             }
@@ -190,7 +190,7 @@ class Validator
                                 $result = false;
                             }
                         } else if ($calculate == "from_filter") {
-                            $total = self::superwoo_coupon_cart_filter_line_total($post_meta["list_id"]);
+                            $total = self::sdwac_coupon_cart_filter_line_total($post_meta["list_id"]);
                             if (!($total < (float) $value)) {
                                 $result = false;
                             }
@@ -202,7 +202,7 @@ class Validator
                                 $result = false;
                             }
                         } else if ($calculate == "from_filter") {
-                            $total = self::superwoo_coupon_cart_filter_line_total($post_meta["list_id"]);
+                            $total = self::sdwac_coupon_cart_filter_line_total($post_meta["list_id"]);
                             if (!($total <= (float) $value)) {
                                 $result = false;
                             }
@@ -214,7 +214,7 @@ class Validator
                                 $result = false;
                             }
                         } else if ($calculate == "from_filter") {
-                            $total = self::superwoo_coupon_cart_filter_line_total($post_meta["list_id"]);
+                            $total = self::sdwac_coupon_cart_filter_line_total($post_meta["list_id"]);
                             if (!($total > (float) $value)) {
                                 $result = false;
                             }
@@ -226,7 +226,7 @@ class Validator
                                 $result = false;
                             }
                         } else if ($calculate == "from_filter") {
-                            $total = self::superwoo_coupon_cart_filter_line_total($post_meta["list_id"]);
+                            $total = self::sdwac_coupon_cart_filter_line_total($post_meta["list_id"]);
                             if (!($total >= (float) $value)) {
                                 $result = false;
                             }
@@ -238,19 +238,19 @@ class Validator
         return $result;
     }
 
-    static public function superwoo_coupon_cart_filter_subtotal($post_id)
+    static public function sdwac_coupon_cart_filter_subtotal($post_id)
     {
-        $filters = get_post_meta($post_id, "superwoo_coupon_filters", true);
-        $superwoo_coupon_products = [];
+        $filters = get_post_meta($post_id, "sdwac_coupon_filters", true);
+        $sdwac_coupon_products = [];
         $amount = 0;
         foreach ($filters as $filter) {
             foreach ($filter["items"] as $filterItem) {
-                array_push($superwoo_coupon_products, $filterItem["value"]);
+                array_push($sdwac_coupon_products, $filterItem["value"]);
             }
         }
         foreach (WC()->cart->get_cart() as $value) {
-            foreach ($superwoo_coupon_products as $superwoo_coupon_product) {
-                if ((string) $value["product_id"] == $superwoo_coupon_product) {
+            foreach ($sdwac_coupon_products as $sdwac_coupon_product) {
+                if ((string) $value["product_id"] == $sdwac_coupon_product) {
                     $amount = $amount + $value["line_subtotal"];
                 }
             }
@@ -258,19 +258,19 @@ class Validator
         return $amount;
     }
 
-    static public function superwoo_coupon_cart_filter_line_total($post_id)
+    static public function sdwac_coupon_cart_filter_line_total($post_id)
     {
-        $filters = get_post_meta($post_id, "superwoo_coupon_filters", true);
-        $superwoo_coupon_products = [];
+        $filters = get_post_meta($post_id, "sdwac_coupon_filters", true);
+        $sdwac_coupon_products = [];
         $total = 0;
         foreach ($filters as $filter) {
             foreach ($filter["items"] as $filterItem) {
-                array_push($superwoo_coupon_products, $filterItem["value"]);
+                array_push($sdwac_coupon_products, $filterItem["value"]);
             }
         }
         foreach (WC()->cart->get_cart() as $value) {
-            foreach ($superwoo_coupon_products as $superwoo_coupon_product) {
-                if ((string) $value["product_id"] == $superwoo_coupon_product) {
+            foreach ($sdwac_coupon_products as $sdwac_coupon_product) {
+                if ((string) $value["product_id"] == $sdwac_coupon_product) {
                     $total += 1;
                 }
             }

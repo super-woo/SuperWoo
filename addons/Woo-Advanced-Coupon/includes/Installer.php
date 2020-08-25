@@ -1,6 +1,6 @@
 <?php
 
-namespace superwoo_coupon\superwoo_coupon_Coupon;
+namespace springdevs\WooAdvanceCoupon;
 
 /**
  * Class Installer
@@ -16,8 +16,6 @@ class Installer
     public function run()
     {
         $this->checkPlugin();
-        $this->add_version();
-        $this->create_tables();
         $this->create_options();
     }
 
@@ -27,22 +25,8 @@ class Installer
     public function checkPlugin()
     {
         if (!in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_option('active_plugins')))) {
-            wp_die(__("You Need to install wooCommerce for use These Plugin !!", "superwoo_coupon"), null, ['back_link' => 1]);
+            wp_die(__("You Need to install wooCommerce for use These Plugin !!", "sdwac_coupon"), null, ['back_link' => 1]);
         }
-    }
-
-    /**
-     * Add time and version on DB
-     */
-    public function add_version()
-    {
-        $installed = get_option('Woo Advance Coupon _installed');
-
-        if (!$installed) {
-            update_option('Woo Advance Coupon _installed', time());
-        }
-
-        update_option('Woo Advance Coupon _version', superwoo_coupon_ASSETS_VERSION);
     }
 
     /**
@@ -62,24 +46,24 @@ class Installer
      **/
     public function create_options()
     {
-        if (!get_option("superwoo_coupon_first_time_purchase_coupon")) {
-            add_option("superwoo_coupon_first_time_purchase_coupon", 0);
+        if (!get_option("sdwac_first_time_purchase_coupon")) {
+            add_option("sdwac_first_time_purchase_coupon", 0);
         }
 
-        if (!get_option("superwoo_coupon_first_time_purchase_coupon_label")) {
-            add_option("superwoo_coupon_first_time_purchase_coupon_label", "Discounted Amount");
+        if (!get_option("sdwac_first_time_purchase_coupon_label")) {
+            add_option("sdwac_first_time_purchase_coupon_label", "Discounted Amount");
         }
 
-        if (!get_option("superwoo_coupon_woo_setting_show_product_discount")) {
-            add_option("superwoo_coupon_woo_setting_show_product_discount", "yes");
+        if (!get_option("sdwac_show_product_discount")) {
+            add_option("sdwac_show_product_discount", "yes");
         }
 
-        if (!get_option("superwoo_coupon_woo_setting_multi")) {
-            add_option("superwoo_coupon_woo_setting_multi", "yes");
+        if (!get_option("sdwac_multi")) {
+            add_option("sdwac_multi", "yes");
         }
 
-        if (!get_option("superwoo_coupon_woo_setting_url")) {
-            add_option("superwoo_coupon_woo_setting_url", "coupon");
+        if (!get_option("sdwac_url")) {
+            add_option("sdwac_url", "coupon");
         }
     }
 }

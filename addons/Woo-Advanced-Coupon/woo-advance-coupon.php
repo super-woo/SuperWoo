@@ -12,11 +12,11 @@ require_once __DIR__ . '/vendor/autoload.php';
 require_once(ABSPATH . 'wp-admin/includes/plugin.php');
 
 /**
- * superwoo_coupon_main class
+ * sdwac_coupon_main class
  *
- * @class superwoo_coupon_main The class that holds the entire superwoo_coupon_main plugin
+ * @class sdwac_coupon_main The class that holds the entire sdwac_coupon_main plugin
  */
-final class superwoo_coupon_main
+final class sdwac_coupon_main
 {
     /**
      * Plugin version
@@ -33,7 +33,7 @@ final class superwoo_coupon_main
     private $container = [];
 
     /**
-     * Constructor for the superwoo_coupon_main class
+     * Constructor for the sdwac_coupon_main class
      *
      * Sets up all the appropriate hooks and actions
      * within our plugin.
@@ -47,19 +47,18 @@ final class superwoo_coupon_main
     }
 
     /**
-     * Initializes the superwoo_coupon_main() class
+     * Initializes the sdwac_coupon_main() class
      *
-     * Checks for an existing superwoo_coupon_main() instance
+     * Checks for an existing sdwac_coupon_main() instance
      * and if it doesn't find one, creates it.
      *
-     * @return superwoo_coupon_main|bool
      */
     public static function init()
     {
         static $instance = false;
 
         if (!$instance) {
-            $instance = new superwoo_coupon_main();
+            $instance = new sdwac_coupon_main();
         }
 
         return $instance;
@@ -100,12 +99,12 @@ final class superwoo_coupon_main
      */
     public function define_constants()
     {
-        define('superwoo_coupon_ASSETS_VERSION', self::version);
-        define('superwoo_coupon_ASSETS_FILE', __FILE__);
-        define('superwoo_coupon_ASSETS_PATH', dirname(superwoo_coupon_ASSETS_FILE));
-        define('superwoo_coupon_ASSETS_INCLUDES', superwoo_coupon_ASSETS_PATH . '/includes');
-        define('superwoo_coupon_ASSETS_URL', plugins_url('', superwoo_coupon_ASSETS_FILE));
-        define('superwoo_coupon_ASSETS_ASSETS', superwoo_coupon_ASSETS_URL . '/assets');
+        define('sdwac_coupon_ASSETS_VERSION', self::version);
+        define('sdwac_coupon_ASSETS_FILE', __FILE__);
+        define('sdwac_coupon_ASSETS_PATH', dirname(sdwac_coupon_ASSETS_FILE));
+        define('sdwac_coupon_ASSETS_INCLUDES', sdwac_coupon_ASSETS_PATH . '/includes');
+        define('sdwac_coupon_ASSETS_URL', plugins_url('', sdwac_coupon_ASSETS_FILE));
+        define('sdwac_coupon_ASSETS_ASSETS', sdwac_coupon_ASSETS_URL . '/assets');
     }
 
     /**
@@ -148,7 +147,7 @@ final class superwoo_coupon_main
      */
     public function activate()
     {
-        $installer = new superwoo_coupon\superwoo_coupon_Coupon\Installer();
+        $installer = new springdevs\WooAdvanceCoupon\Installer();
         $installer->run();
     }
 
@@ -169,15 +168,15 @@ final class superwoo_coupon_main
     public function includes()
     {
         if ($this->is_request('admin')) {
-            $this->container['admin'] = new superwoo_coupon\superwoo_coupon_Coupon\Admin();
+            $this->container['admin'] = new springdevs\WooAdvanceCoupon\Admin();
         }
 
         if ($this->is_request('frontend')) {
-            $this->container['frontend'] = new superwoo_coupon\superwoo_coupon_Coupon\Frontend();
+            $this->container['frontend'] = new springdevs\WooAdvanceCoupon\Frontend();
         }
 
         if ($this->is_request('ajax')) {
-            $this->container['ajax'] = new superwoo_coupon\superwoo_coupon_Coupon\Ajax();
+            $this->container['ajax'] = new springdevs\WooAdvanceCoupon\Ajax();
         }
     }
 
@@ -202,9 +201,9 @@ final class superwoo_coupon_main
     public function init_classes()
     {
         if ($this->is_request('ajax')) {
-            // $this->container['ajax'] =  new superwoo_coupon\superwoo_coupon_Coupon\Ajax();
+            // $this->container['ajax'] =  new sdwac_coupon\sdwac_coupon_Coupon\Ajax();
         }
-        $this->container['assets'] = new superwoo_coupon\superwoo_coupon_Coupon\Assets();
+        $this->container['assets'] = new springdevs\WooAdvanceCoupon\Assets();
     }
 
     /**
@@ -214,7 +213,7 @@ final class superwoo_coupon_main
      */
     public function localization_setup()
     {
-        load_plugin_textdomain('superwoo_coupon', false, dirname(plugin_basename(__FILE__)) . '/languages/');
+        load_plugin_textdomain('sdwac_coupon', false, dirname(plugin_basename(__FILE__)) . '/languages/');
     }
 
     /**
@@ -243,19 +242,19 @@ final class superwoo_coupon_main
                 return (!is_admin() || defined('DOING_AJAX')) && !defined('DOING_CRON');
         }
     }
-} // superwoo_coupon_main
+} // sdwac_coupon_main
 
 /**
  * Initialize the main plugin
  *
- * @return \superwoo_coupon_main|bool
+ * @return \sdwac_coupon_main|bool
  */
-function superwoo_coupon_main()
+function sdwac_coupon_main()
 {
-    return superwoo_coupon_main::init();
+    return sdwac_coupon_main::init();
 }
 
 /**
  *  kick-off the plugin
  */
-superwoo_coupon_main();
+sdwac_coupon_main();

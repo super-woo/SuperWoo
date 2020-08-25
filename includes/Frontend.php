@@ -1,15 +1,16 @@
 <?php
 
-namespace WpAdroit\SuperWoo;
+namespace SpringDevs\WcMissingAddons;
 
 /**
  * Frontend handler class
  */
-class Frontend {
+class Frontend
+{
     /**
      * Frontend constructor.
      */
-    public function __construct() {
-        new Frontend\Shortcode();
+    public function __construct()
+    {
     }
 }

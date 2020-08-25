@@ -1,20 +1,20 @@
 {
-    "name": "superwoo_coupon/superwoo_coupon-advance-coupon",
-    "description": "WooCommerce Missing Coupon Features",
-    "type": "wordpress-plugin",
-    "license": "GPLv2",
-    "authors": [{
-        "name": "Super Woo",
-        "email": "contact@superwoo.com"
-    }],
-    "minimum-stability": "dev",
-    "require": {},
-    "autoload": {
-        "psr-4": {
-            "superwoo_coupon\\superwoo_coupon_Coupon\\": "includes/"
-        },
-        "files": [
-            "includes/functions.php"
-        ]
-    }
+  "name": "springdevs/woo-advance-coupon",
+  "description": "WooCommerce Missing Coupon Features",
+  "type": "wordpress-plugin",
+  "license": "GPLv2",
+  "authors": [{
+    "name": "SpringDevs",
+    "email": "contact@springdevs.com"
+  }],
+  "minimum-stability": "dev",
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "springdevs\\WooAdvanceCoupon\\": "includes/"
+    },
+    "files": [
+      "includes/functions.php"
+    ]
+  }
 }

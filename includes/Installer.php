@@ -1,18 +1,19 @@
 <?php
 
-namespace WpAdroit\SuperWoo;
+namespace SpringDevs\WcMissingAddons;
 
 /**
  * Class Installer
- * @package WpAdroit\SuperWoo
  */
-class Installer {
+class Installer
+{
     /**
      * Run the installer
      *
      * @return void
      */
-    public function run() {
+    public function run()
+    {
         $this->add_version();
         $this->create_tables();
     }
@@ -20,15 +21,15 @@ class Installer {
     /**
      * Add time and version on DB
      */
-    public function add_version() {
-        $installed = get_option( 'SuperWoo_installed' );
+    public function add_version()
+    {
+        $installed = get_option('springdevs_wma_installed');
 
-        if ( ! $installed ) {
-            update_option( 'SuperWoo_installed', time() );
+        if (!$installed) {
+            update_option('springdevs_wma_installed', time());
         }
 
-        update_option( 'SuperWoo_version', SUPERWOO_ASSETS_VERSION );
-
+        update_option('springdevs_wma_version', springdevs_wma_ASSETS_VERSION);
     }
 
     /**
@@ -36,13 +37,10 @@ class Installer {
      *
      * @return void
      */
-    public function create_tables() {
-        if ( ! function_exists( 'dbDelta' ) ) {
+    public function create_tables()
+    {
+        if (!function_exists('dbDelta')) {
             require_once ABSPATH . 'wp-admin/includes/upgrade.php';
         }
-
-        
     }
-
-    
 }

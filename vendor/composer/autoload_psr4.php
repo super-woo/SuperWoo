@@ -6,5 +6,5 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'WpAdroit\\SuperWoo\\' => array($baseDir . '/includes'),
+    'SpringDevs\\WcMissingAddons\\' => array($baseDir . '/includes'),
 );

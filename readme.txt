@@ -1,4 +1,4 @@
-=== SuperWoo ===
+=== springdevs_wma ===
 Contributors: naminbd, istiaqnirab
 Donate link: 
 Tags: Discount, Coupon
@@ -33,13 +33,13 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
         1. Visit **Plugins > Add New**.
         2. Search for **Super Woo**.
-        3. Install and activate the SuperWoo plugin.
+        3. Install and activate the springdevs_wma plugin.
 
     = Manual installation =
 
-        1. Upload the entire `superwoo` folder to the `/wp-content/plugins/` directory.
+        1. Upload the entire `springdevs_wma` folder to the `/wp-content/plugins/` directory.
         2. Visit **Plugins**.
-        3. Activate the SuperWoo plugin.
+        3. Activate the springdevs_wma plugin.
 	
 
 == Screenshots ==

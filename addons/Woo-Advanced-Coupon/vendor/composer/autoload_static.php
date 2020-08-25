@@ -7,18 +7,18 @@ namespace Composer\Autoload;
 class ComposerStaticInitaf96d97d3289cad25c2c755344486969
 {
     public static $files = array (
-        '0b0b96c757bc21b05a4512b1374dfcb8' => __DIR__ . '/../..' . '/includes/functions.php',
+        '4c66dd42ee4ffa679c26f2771a096a1e' => __DIR__ . '/../..' . '/includes/functions.php',
     );
 
     public static $prefixLengthsPsr4 = array (
         's' => 
         array (
-            'superwoo_coupon\\superwoo_coupon_Coupon\\' => 39,
+            'springdevs\\WooAdvanceCoupon\\' => 28,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'superwoo_coupon\\superwoo_coupon_Coupon\\' => 
+        'springdevs\\WooAdvanceCoupon\\' => 
         array (
             0 => __DIR__ . '/../..' . '/includes',
         ),

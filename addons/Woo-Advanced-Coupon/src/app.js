@@ -14,7 +14,7 @@ Vue.component("supertabs", require("./components/tabs.vue").default);
 new Vue({
   el: "#post",
   data: {
-    superwoo_coupon_form: {
+    sdwac_coupon_form: {
       type: "product"
     }
   }
