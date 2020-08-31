@@ -1,4 +1,4 @@
-=== springdevs_wma ===
+=== Missing Addons for WooCommerce ===
 
 Supercharge your WooCommerce powered store!
 
@@ -22,23 +22,24 @@ Supercharge your WooCommerce powered store!
 
 == Installation ==
 
-    = Installation from within WordPress =
+     = Installation from within WordPress =
 
         1. Visit **Plugins > Add New**.
-        2. Search for **Super Woo**.
-        3. Install and activate the springdevs_wma plugin.
+        2. Search for **Missing Addons for WooCommerce**.
+        3. Install and activate the `Missing Addons for WooCommerce` plugin.
 
     = Manual installation =
 
-        1. Upload the entire `springdevs_wma` folder to the `/wp-content/plugins/` directory.
+        1. Upload the entire `Missing Addons for WooCommerce` folder to the `/wp-content/plugins/` directory.
         2. Visit **Plugins**.
-        3. Activate the springdevs_wma plugin.
+        3. Activate the `Missing Addons for WooCommerce` plugin.
+	
 
 == Screenshots ==
 
     1. Discount for product adjustment.
-    2. Bulk Discount
-    3. Cart discount adjustment
+    2. Cart discount adjustment 
+    3. Bulk Discount
     4. Setting Page
 
 == Changelog ==
